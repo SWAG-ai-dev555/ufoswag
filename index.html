@@ -1,41 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
 <title>UFOSWAG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  height: 100vh;
+  background: url("assets/background.png") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Arial, sans-serif;
 }
 
-body {
-  height: 100vh;
-  background: url("assets/background.png") no-repeat center center / cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
 .card {
-  background: rgba(20, 30, 40, 0.75);
+  background: rgba(15, 25, 35, 0.75);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
   width: 260px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0,0,0,0.7);
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  color: white;
+  box-shadow: 0 0 40px rgba(0,0,0,.8);
 }
 
 .avatar {
@@ -46,31 +35,14 @@ body {
   object-fit: cover;
 }
 
-h1 {
+button {
   margin-top: 15px;
-  font-size: 22px;
-}
-
-p {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 15px;
-}
-
-.play-btn {
-  margin-top: 10px;
-  background: none;
-  border: 2px solid white;
-  color: white;
   padding: 10px 20px;
   border-radius: 30px;
+  border: 2px solid white;
+  background: none;
+  color: white;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.play-btn:hover {
-  background: white;
-  color: black;
 }
 </style>
 </head>
@@ -79,28 +51,27 @@ p {
 
 <div class="card">
   <img src="assets/avatar.gif" class="avatar">
-  <h1>UFOSWAG</h1>
+  <h2>UFOSWAG</h2>
   <p>space vibes only 👽</p>
-
-  <button class="play-btn" id="playBtn">▶ PLAY</button>
+  <button id="btn">▶ PLAY</button>
 </div>
 
 <audio id="music" src="assets/music.mp3" loop></audio>
 
 <script>
+const btn = document.getElementById("btn");
 const music = document.getElementById("music");
-const btn = document.getElementById("playBtn");
 
-btn.addEventListener("click", () => {
+btn.onclick = () => {
   if (music.paused) {
-    music.volume = 0.4;
+    music.volume = 0.5;
     music.play();
     btn.textContent = "⏸ PAUSE";
   } else {
     music.pause();
     btn.textContent = "▶ PLAY";
   }
-});
+};
 </script>
 
 </body>
