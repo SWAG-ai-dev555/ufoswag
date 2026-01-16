@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>UFOSWAG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
+    url("assets/background.png") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: url("assets/avatar.gif") center / cover no-repeat;
+  box-shadow: 0 0 25px #5a6cff;
+  border: 3px solid rgba(90,108,255,.8);
+}
+
+h1 {
+  letter-spacing: 4px;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: .7;
+  margin-bottom: 30px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+a.btn {
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(25,25,25,.8);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: .25s;
+}
+
+a.btn:hover {
+  transform: scale(1.04);
+  background: rgba(40,40,40,.9);
+}
+
+a.btn.main {
+  background: linear-gradient(135deg, #5a6cff, #6f7dff);
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="avatar"></div>
+
+    <h1>UFOSWAG</h1>
+    <div class="subtitle">AGA — NAVDASANG DA</div>
+
+    <div class="links">
+      <a class="btn main" href="https://discord.gg/voidal" target="_blank">💬 Discord сервер</a>
+      <a class="btn" href="https://instagram.com/ufoswag1" target="_blank">📸 Instagram</a>
+      <a class="btn" href="https://guns.lol/ufoswag" target="_blank">🔗 guns.lol</a>
+      <a class="btn" href="https://lnk.bio/ufoswag" target="_blank">🔗 lnk.bio</a>
+    </div>
+  </div>
+</body>
+</html>
