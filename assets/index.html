@@ -1,160 +1,63 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>UFOSWAG</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>ufoswag.bio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
-    url("assets/background.png") center / cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-}
+    body {
+      height: 100vh;
+      background: url("assets/background.png") no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
 
-/* КАРТОЧКА */
-.container {
-  text-align: center;
-  padding: 40px 20px;
-}
+    .card {
+      text-align: center;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.55);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    }
 
-/* АВА */
-.avatar {
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  background: url("assets/avatar.gif") center / cover no-repeat;
-  box-shadow: 0 0 25px #5a6cff;
-  border: 3px solid rgba(90,108,255,.8);
-}
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
 
-/* ТЕКСТ */
-h1 {
-  letter-spacing: 4px;
-  font-size: 32px;
-  margin-bottom: 10px;
-}
+    h1 {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
 
-.subtitle {
-  opacity: .7;
-  margin-bottom: 25px;
-}
-
-/* КНОПКА МУЗЫКИ */
-.music-btn {
-  margin-bottom: 25px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(90,108,255,.2);
-  border: 1px solid rgba(90,108,255,.6);
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-  transition: .25s;
-}
-
-.music-btn:hover {
-  background: rgba(90,108,255,.35);
-}
-
-/* КНОПКИ */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-a.btn {
-  text-decoration: none;
-  padding: 14px;
-  border-radius: 14px;
-  font-weight: bold;
-  color: #fff;
-  background: rgba(25,25,25,.8);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,.08);
-  transition: .25s;
-}
-
-a.btn:hover {
-  transform: scale(1.04);
-  background: rgba(40,40,40,.9);
-}
-
-a.btn.main {
-  background: linear-gradient(135deg, #5a6cff, #6f7dff);
-}
-</style>
+    p {
+      opacity: 0.85;
+      font-size: 14px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- МУЗЫКА -->
-<audio id="bgMusic" loop>
-  <source src="assets/music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="container">
-
-  <div class="avatar"></div>
-
-  <h1>UFOSWAG</h1>
-  <div class="subtitle">AGA — NAVDASANG DA</div>
-
-  <button class="music-btn" onclick="toggleMusic()">
-    🔊 Включить музыку
-  </button>
-
-  <div class="links">
-    <a class="btn main" href="https://discord.gg/voidal" target="_blank">
-      💬 Discord сервер
-    </a>
-
-    <a class="btn" href="https://instagram.com/ufoswag1" target="_blank">
-      📸 Instagram
-    </a>
-
-    <a class="btn" href="https://guns.lol/ufoswag" target="_blank">
-      🔗 guns.lol
-    </a>
-
-    <a class="btn" href="https://lnk.bio/ufoswag" target="_blank">
-      🔗 lnk.bio
-    </a>
+  <div class="card">
+    <img src="assets/avatar.gif" class="avatar" />
+    <h1>UFOSWAG</h1>
+    <p>space vibes only 👽</p>
   </div>
-
-</div>
-
-<script>
-const music = document.getElementById("bgMusic");
-const btn = document.querySelector(".music-btn");
-let playing = false;
-
-function toggleMusic() {
-  if (!playing) {
-    music.volume = 0.6;
-    music.play();
-    btn.textContent = "🔇 Выключить музыку";
-  } else {
-    music.pause();
-    btn.textContent = "🔊 Включить музыку";
-  }
-  playing = !playing;
-}
-</script>
 
 </body>
 </html>
