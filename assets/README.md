@@ -1,7 +1,7 @@
 # UFOSWAG
 
 Personal landing page  
-space vibes only 👽
+хуй
 
 Live:
 https://swag-ai-dev555.github.io/ufoswag/
