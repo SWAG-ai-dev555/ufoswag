@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFOSWAG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url("assets/background.png") center/cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 320px;
+  background: rgba(20, 30, 40, 0.85);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.title span {
+  display: inline-block;
+  animation: wave 1.8s infinite;
+}
+
+.title span:nth-child(n) {
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes wave {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.subtitle {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.play-btn {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.links a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.15);
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <img src="assets/avatar.png" class="avatar">
+
+  <h2 class="title">
+    <span style="--i:1">U</span>
+    <span style="--i:2">F</span>
+    <span style="--i:3">O</span>
+    <span style="--i:4">S</span>
+    <span style="--i:5">W</span>
+    <span style="--i:6">A</span>
+    <span style="--i:7">G</span>
+  </h2>
+
+  <p class="subtitle">space vibes only 👽</p>
+
+  <button class="play-btn" id="playBtn">▶ PLAY</button>
+
+  <div class="links">
+    <a href="https://discord.com/channels/1456381267401637982/1461354990143541259" target="_blank">Discord</a>
+    <a href="https://instagram.com/ufoswag1" target="_blank">Instagram</a>
+    <a href="https://guns.lol/ufoswag" target="_blank">guns.lol</a>
+    <a href="https://lnk.bio/ufoswag" target="_blank">lnk.bio</a>
+  </div>
+</div>
+
+<audio id="music" src="assets/music.mp3"></audio>
+
+<script>
+const btn = document.getElementById("playBtn");
+const music = document.getElementById("music");
+
+btn.onclick = () => {
+  if (music.paused) {
+    music.play();
+    btn.textContent = "⏸ PAUSE";
+  } else {
+    music.pause();
+    btn.textContent = "▶ PLAY";
+  }
+};
+</script>
+
+</body>
+</html>
