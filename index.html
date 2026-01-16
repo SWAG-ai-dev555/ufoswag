@@ -6,46 +6,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
+body{
+  height:100vh;
+  background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80")
+  center/cover no-repeat fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
 }
 
-body {
-  height: 100vh;
-  background: url("assets/bg.jpg") center/cover no-repeat fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+.card{
+  background:rgba(20,30,40,.75);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:30px;
+  width:330px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(0,0,0,.7);
 }
 
-.card {
-  background: rgba(20, 35, 45, 0.75);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 0 40px rgba(0,0,0,.6);
+.avatar{
+  width:115px;
+  height:115px;
+  border-radius:50%;
+  border:3px solid #fff;
+  margin-bottom:15px;
 }
 
-.avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 3px solid white;
-  margin-bottom: 15px;
-}
-
-/* АНИМАЦИЯ НАЗВАНИЯ */
-.title span {
-  display: inline-block;
-  font-size: 26px;
-  font-weight: bold;
-  animation: wave 1.6s infinite;
+.title span{
+  display:inline-block;
+  font-size:28px;
+  font-weight:800;
+  animation:wave 1.5s infinite;
 }
 
 .title span:nth-child(1){animation-delay:0s}
@@ -56,52 +51,50 @@ body {
 .title span:nth-child(6){animation-delay:.5s}
 .title span:nth-child(7){animation-delay:.6s}
 
-@keyframes wave {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+@keyframes wave{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
 }
 
-.subtitle {
-  font-size: 14px;
-  opacity: .8;
-  margin-bottom: 20px;
+.subtitle{
+  font-size:14px;
+  opacity:.8;
+  margin:10px 0 20px;
 }
 
-/* КНОПКИ */
-.links a {
-  display: block;
-  margin: 10px 0;
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.12);
-  text-decoration: none;
-  color: #fff;
-  transition: .3s;
+.play{
+  margin-bottom:20px;
+  padding:10px 24px;
+  border-radius:40px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  background:#fff;
+  color:#000;
 }
 
-.links a:hover {
-  background: rgba(255,255,255,.25);
-  transform: scale(1.05);
+.links a{
+  display:block;
+  margin:10px 0;
+  padding:12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  text-decoration:none;
+  transition:.3s;
 }
 
-.play {
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  background: white;
-  color: black;
-  font-weight: bold;
+.links a:hover{
+  background:rgba(255,255,255,.3);
+  transform:scale(1.06);
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="card">
-  <img src="assets/avatar.png" class="avatar">
+  <img class="avatar" src="https://i.imgur.com/7yUVEZo.png">
 
   <div class="title">
     <span>U</span><span>F</span><span>O</span><span>S</span><span>W</span><span>A</span><span>G</span>
@@ -120,17 +113,13 @@ body {
 </div>
 
 <audio id="music" loop>
-  <source src="assets/music.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7b0f9f0e63.mp3">
 </audio>
 
 <script>
-const music = document.getElementById("music");
+const music=document.getElementById("music");
 function toggleMusic(){
-  if(music.paused){
-    music.play();
-  } else {
-    music.pause();
-  }
+  music.paused ? music.play() : music.pause();
 }
 </script>
 
