@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>UFOSWAG</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,132 +15,101 @@
 
 body {
   height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url("assets/background.png") center / 110% no-repeat;
-  animation: bgMove 30s infinite alternate ease-in-out;
+  background: url("assets/bg.jpg") center/cover no-repeat fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #fff;
 }
 
-@keyframes bgMove {
-  from { background-position: center top; }
-  to { background-position: center bottom; }
-}
-
-/* CARD */
 .card {
-  width: 320px;
-  background: rgba(15, 30, 40, 0.9);
+  background: rgba(20, 35, 45, 0.75);
   backdrop-filter: blur(10px);
-  border-radius: 22px;
-  padding: 25px;
+  border-radius: 20px;
+  padding: 30px;
+  width: 320px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0,0,0,.7);
-  animation: fadeIn 1.5s ease forwards;
-  opacity: 0;
+  box-shadow: 0 0 40px rgba(0,0,0,.6);
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* AVATAR */
 .avatar {
   width: 110px;
   height: 110px;
   border-radius: 50%;
   border: 3px solid white;
-  object-fit: cover;
   margin-bottom: 15px;
-  animation: pulse 3s infinite ease-in-out;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.07); }
-  100% { transform: scale(1); }
-}
-
-/* ANIMATED TEXT */
-.title {
-  font-size: 26px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
+/* АНИМАЦИЯ НАЗВАНИЯ */
 .title span {
   display: inline-block;
-  animation: wave 1.8s infinite;
+  font-size: 26px;
+  font-weight: bold;
+  animation: wave 1.6s infinite;
 }
 
-.title span:nth-child(n) {
-  animation-delay: calc(0.1s * var(--i));
-}
+.title span:nth-child(1){animation-delay:0s}
+.title span:nth-child(2){animation-delay:.1s}
+.title span:nth-child(3){animation-delay:.2s}
+.title span:nth-child(4){animation-delay:.3s}
+.title span:nth-child(5){animation-delay:.4s}
+.title span:nth-child(6){animation-delay:.5s}
+.title span:nth-child(7){animation-delay:.6s}
 
 @keyframes wave {
-  0% { transform: translateY(0); opacity: .6; }
-  50% { transform: translateY(-8px); opacity: 1; }
-  100% { transform: translateY(0); opacity: .6; }
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .subtitle {
-  margin-top: 8px;
   font-size: 14px;
-  opacity: .85;
+  opacity: .8;
+  margin-bottom: 20px;
 }
 
-/* BUTTONS */
-.links {
-  margin-top: 18px;
-}
-
+/* КНОПКИ */
 .links a {
   display: block;
-  margin: 8px 0;
-  padding: 10px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.1);
-  color: white;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.12);
   text-decoration: none;
+  color: #fff;
   transition: .3s;
 }
 
 .links a:hover {
-  background: rgba(0,255,255,.25);
+  background: rgba(255,255,255,.25);
   transform: scale(1.05);
 }
 
-/* PLAY BUTTON */
-.play-btn {
+.play {
   margin-top: 15px;
   padding: 10px;
-  border-radius: 14px;
-  background: rgba(0,255,255,.2);
+  border-radius: 50px;
+  border: none;
   cursor: pointer;
+  background: white;
+  color: black;
+  font-weight: bold;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="card">
-
   <img src="assets/avatar.png" class="avatar">
 
   <div class="title">
-    <span style="--i:1">U</span>
-    <span style="--i:2">F</span>
-    <span style="--i:3">O</span>
-    <span style="--i:4">S</span>
-    <span style="--i:5">W</span>
-    <span style="--i:6">A</span>
-    <span style="--i:7">G</span>
+    <span>U</span><span>F</span><span>O</span><span>S</span><span>W</span><span>A</span><span>G</span>
   </div>
 
   <div class="subtitle">space vibes only 👽</div>
+
+  <button class="play" onclick="toggleMusic()">▶ PLAY</button>
 
   <div class="links">
     <a href="https://discord.com/voidal" target="_blank">Discord</a>
@@ -148,16 +117,20 @@ body {
     <a href="https://guns.lol/ufoswag" target="_blank">guns.lol</a>
     <a href="https://lnk.bio/ufoswag" target="_blank">lnk.bio</a>
   </div>
-
-  <div class="play-btn" onclick="playMusic()">▶ play</div>
-
 </div>
 
-<audio id="music" src="assets/music.mp3"></audio>
+<audio id="music" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function playMusic() {
-  document.getElementById("music").play();
+const music = document.getElementById("music");
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  } else {
+    music.pause();
+  }
 }
 </script>
 
