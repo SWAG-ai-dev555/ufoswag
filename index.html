@@ -1,123 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>UFOSWAG</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>UFOSWAG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-body{
-  height:100vh;
-  background:#111;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: url("background.png") center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.card{
-  background:#5b646b;
-  border-radius:26px;
-  padding:32px 26px;
-  width:320px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(0,0,0,.6);
-}
+    .card {
+      width: 320px;
+      padding: 30px 20px;
+      background: rgba(15, 20, 25, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
 
-.avatar{
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  border:3px solid #fff;
-  margin-bottom:14px;
-}
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
 
-.title span{
-  display:inline-block;
-  font-size:26px;
-  font-weight:800;
-  animation:wave 1.4s infinite;
-}
+    /* АНИМАЦИЯ ТЕКСТА */
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
 
-.title span:nth-child(1){animation-delay:0s}
-.title span:nth-child(2){animation-delay:.1s}
-.title span:nth-child(3){animation-delay:.2s}
-.title span:nth-child(4){animation-delay:.3s}
-.title span:nth-child(5){animation-delay:.4s}
-.title span:nth-child(6){animation-delay:.5s}
-.title span:nth-child(7){animation-delay:.6s}
+    .title span {
+      opacity: 0;
+      display: inline-block;
+      animation: reveal 0.4s forwards;
+    }
 
-@keyframes wave{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-7px)}
-}
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.subtitle{
-  font-size:14px;
-  opacity:.9;
-  margin:10px 0 18px;
-}
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
 
-.play{
-  margin-bottom:18px;
-  padding:9px 22px;
-  border-radius:40px;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-}
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-.links a{
-  display:block;
-  margin:10px 0;
-  padding:12px;
-  border-radius:14px;
-  background:#6b747b;
-  color:#fff;
-  text-decoration:none;
-  transition:.25s;
-}
+    .links a {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,0.12);
+      padding: 12px;
+      border-radius: 10px;
+      margin: 10px 0;
+      transition: 0.2s;
+    }
 
-.links a:hover{
-  background:#7c858c;
-  transform:scale(1.05);
-}
-</style>
+    .links a:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="card">
-  <img class="avatar" src="https://i.imgur.com/7yUVEZo.png">
+  <div class="card">
+    <img src="avatar.png" class="avatar" alt="avatar" />
 
-  <div class="title">
-    <span>U</span><span>F</span><span>O</span><span>S</span><span>W</span><span>A</span><span>G</span>
+    <div class="title" id="animatedTitle"></div>
+    <div class="subtitle">space vibes only 👽</div>
+
+    <button class="play-btn" id="playBtn">▶ PLAY</button>
+
+    <div class="links">
+      <a href="https://discord.com/channels/1456381267401637982/1461354990143541259" target="_blank">Discord</a>
+      <a href="https://instagram.com/ufoswag1" target="_blank">Instagram</a>
+      <a href="https://guns.lol/ufoswag" target="_blank">guns.lol</a>
+      <a href="https://lnk.bio/ufoswag" target="_blank">lnk.bio</a>
+    </div>
   </div>
 
-  <div class="subtitle">space vibes only 👽</div>
+  <audio id="music" src="music.mp3"></audio>
 
-  <button class="play" onclick="toggleMusic()">▶ PLAY</button>
+  <script>
+    /* АНИМАЦИЯ БУКВ */
+    const text = "UFOSWAG";
+    const container = document.getElementById("animatedTitle");
 
-  <div class="links">
-    <a href="https://discord.gg/HwRw8CNSSQ" target="_blank">Discord</a>
-    <a href="https://instagram.com/ufoswag1" target="_blank">Instagram</a>
-    <a href="https://guns.lol/ufoswag" target="_blank">guns.lol</a>
-    <a href="https://lnk.bio/ufoswag" target="_blank">lnk.bio</a>
-  </div>
-</div>
+    [...text].forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.animationDelay = `${i * 0.15}s`;
+      container.appendChild(span);
+    });
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7b0f9f0e63.mp3">
-</audio>
+    /* PLAY / PAUSE */
+    const music = document.getElementById("music");
+    const playBtn = document.getElementById("playBtn");
+    let playing = false;
 
-<script>
-const music=document.getElementById("music");
-function toggleMusic(){
-  music.paused ? music.play() : music.pause();
-}
-</script>
+    playBtn.addEventListener("click", () => {
+      if (!playing) {
+        music.play();
+        playBtn.textContent = "⏸ PAUSE";
+      } else {
+        music.pause();
+        playBtn.textContent = "▶ PLAY";
+      }
+      playing = !playing;
+    });
+  </script>
 
 </body>
 </html>
