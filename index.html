@@ -1,63 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ufoswag.bio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UFOSWAG</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      height: 100vh;
-      background: url("assets/background.png") no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
+body {
+  height: 100vh;
+  background: url("assets/background.png") no-repeat center center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
 
-    .card {
-      text-align: center;
-      backdrop-filter: blur(12px);
-      background: rgba(0, 0, 0, 0.55);
-      padding: 30px 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.7);
-    }
+.card {
+  background: rgba(20, 30, 40, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+  animation: float 4s ease-in-out infinite;
+}
 
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 3px solid white;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 5px;
-    }
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
 
-    p {
-      opacity: 0.85;
-      font-size: 14px;
-    }
-  </style>
+h1 {
+  margin-top: 15px;
+  font-size: 22px;
+}
+
+p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.play-btn {
+  margin-top: 10px;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-btn:hover {
+  background: white;
+  color: black;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <img src="assets/avatar.gif" class="avatar" />
-    <h1>UFOSWAG</h1>
-    <p>space vibes only 👽</p>
-  </div>
+<div class="card">
+  <img src="assets/avatar.gif" class="avatar">
+  <h1>UFOSWAG</h1>
+  <p>space vibes only 👽</p>
+
+  <button class="play-btn" id="playBtn">▶ PLAY</button>
+</div>
+
+<audio id="music" src="assets/music.mp3" loop></audio>
+
+<script>
+const music = document.getElementById("music");
+const btn = document.getElementById("playBtn");
+
+btn.addEventListener("click", () => {
+  if (music.paused) {
+    music.volume = 0.4;
+    music.play();
+    btn.textContent = "⏸ PAUSE";
+  } else {
+    music.pause();
+    btn.textContent = "▶ PLAY";
+  }
+});
+</script>
 
 </body>
 </html>
